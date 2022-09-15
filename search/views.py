@@ -2,19 +2,15 @@ import logging
 from flask import Blueprint, render_template, request
 from utils import search_for_posts, get_posts_by_user, get_posts_all
 
-# Определение пути файла с данными
-PATH = "data/posts.json"
 
-# Создание эскиза
-search_blueprint = Blueprint("search_blueprint", __name__,
-                             template_folder="templates_search", static_folder="static")
+search_blueprint = Blueprint("search_blueprint", __name__, template_folder="templates", static_folder="static")
 
 
 @search_blueprint.route('/search/', methods=['GET'])
 def search_page():
     """ Представление  страницы поиска"""
 
-    path = get_posts_all(PATH)
+    path = get_posts_all()
     recieved_word = request.args.get('s')
     posts = search_for_posts(path, recieved_word)
     if posts:
@@ -28,7 +24,7 @@ def get_posts_user(name):
     """ Представление  страницы по конкретному пользователю"""
 
     try:
-        post_data = get_posts_all(PATH)
+        post_data = get_posts_all()
         posts = get_posts_by_user(post_data, name)
         return render_template("user-feed.html", posts=posts)
     except ValueError:

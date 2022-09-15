@@ -1,18 +1,16 @@
 from flask import Blueprint, render_template
 from utils import get_post_by_pk, get_comments_by_post_id, get_posts_all, get_comments_all
 
-PATH_POSTS = "data/posts.json"
-PATH_COMMENTS = "data/comments.json"
 
-post_blueprint = Blueprint("post_blueprint", __name__, template_folder="templates_posts", static_folder="static")
+post_blueprint = Blueprint("post_blueprint", __name__, template_folder="templates", static_folder="static")
 
 
 @post_blueprint.route('/posts/<int:postid>')
 def get_posts(postid):
 
     try:
-        posts = get_posts_all(PATH_POSTS)
-        comments = get_comments_all(PATH_COMMENTS)
+        posts = get_posts_all()
+        comments = get_comments_all()
         posts_by_pk = get_post_by_pk(posts, postid)
         comments_by_pk = get_comments_by_post_id(posts, comments, postid)
         comments_len = len(comments)

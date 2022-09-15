@@ -6,7 +6,7 @@ PATH_COMMENTS = "data/comments.json"
 def get_posts_all():
     """Возвращает список словарей с постами"""
 
-    with open("PATH_POSTS", 'r', encoding="UTF-8") as file:
+    with open(PATH_POSTS, 'r', encoding="UTF-8") as file:
         python_file = json.load(file)
         return python_file
 
@@ -14,7 +14,7 @@ def get_posts_all():
 def get_comments_all():
     """Возвращает список словарей с комментами"""
 
-    with open("PATH_COMMENTS", 'r', encoding="UTF-8") as file:
+    with open(PATH_COMMENTS, 'r', encoding="UTF-8") as file:
         return json.load(file)
 
 

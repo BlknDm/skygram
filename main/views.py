@@ -2,16 +2,14 @@ from flask import render_template, Blueprint
 from utils import get_posts_all
 
 
-main_blueprint = Blueprint("main_blueprint ", __name__, template_folder="templates_main", static_folder="static")
-
-posts = "data/posts.json"
+main_blueprint = Blueprint("main_blueprint", __name__, template_folder="templates", static_folder="static")
 
 
 @main_blueprint.route('/')
 def main_page():
     """ Представление основной страницы"""
 
-    all_posts = get_posts_all(posts)
+    all_posts = get_posts_all()
     return render_template("index.html", all_posts=all_posts)
 
 
