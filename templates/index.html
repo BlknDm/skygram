@@ -36,17 +36,17 @@
         <div class="item__top">
           <a href="/user/{{ item.poster_name }}" class="item__head">
             <div class="item__ava-wrap">
-              <img src="{{item.poster_avatar}}" alt="" class="item__ava" width="47">
+              <img src="{{ item.poster_avatar }}" alt="" class="item__ava" width="47">
             </div>
-            <span class="item__username">{{item.poster_name | title}}</span>
+            <span class="item__username">{{ item.poster_name | title }}</span>
           </a>
         </div>
-          <img src="{{item.pic}}" alt="" width="348" class="item__post-img">
-        <p class="item__descr">{{ item.content[0:50]}}...</p>
+          <img src="{{ item.pic }}" alt="" width="348" class="item__post-img">
+        <p class="item__descr">{{ item.content[0:50] }}...</p>
         <div class="item__post-info">
           <div class="item__counter">
             <img src="../static/img/eye.png" alt="" class="item__counter-icon" width="26">
-            <span class="item__counter-text">{{item.views_count}}</span>
+            <span class="item__counter-text">{{ item.views_count }}</span>
           </div>
         </div>
         <div class="item__post-bottom">
