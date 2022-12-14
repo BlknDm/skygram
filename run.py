@@ -1,11 +1,9 @@
-from flask import Flask, render_template
-import logging
+from flask import Flask
 
-
-from main.views import main_blueprint
-from search.views import search_blueprint
-from post.views import post_blueprint
 from api.views import api_blueprint
+from main.views import main_blueprint
+from post.views import post_blueprint
+from search.views import search_blueprint
 
 app = Flask(__name__)
 
