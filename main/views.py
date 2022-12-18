@@ -1,8 +1,24 @@
-from flask import render_template, Blueprint
+from flask import render_template, Blueprint, jsonify
 from utils import get_posts_all
+from db import db
 
 
 main_blueprint = Blueprint("main_blueprint", __name__, template_folder="templates", static_folder="static")
+
+
+@main_blueprint.route('/test_db')
+def test_db():
+    result = db.session.execute(
+        '''
+        SELECT 1
+        '''
+    ).scalar()
+
+    return jsonify(
+        {
+            'result': result
+        }
+    )
 
 
 @main_blueprint.route('/')

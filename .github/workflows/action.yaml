@@ -1,10 +1,14 @@
-name: Build and deploy workflow
+name: CI
 on: [push]
 jobs:
-  build_and_push:
+  build:
     runs-on: ubuntu-latest
     steps:
-      - name: clone code
+      - name: checkout
         uses: actions/checkout@v2
-      - name: docker build
-        run: docker build -t 
+      - name: build
+        run: docker build -t blkndm/skygram:$GITHUB_REF_NAME-$GITHUB_RUN_ID .
+      - name: login
+        run: docker login -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_PASSWORD }}
+      - name: push
+        run: docker push blkndm/skygram:$GITHUB_REF_NAME-$GITHUB_RUN_ID
